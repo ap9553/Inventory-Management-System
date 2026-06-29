@@ -1,0 +1,47 @@
+/* Dashboard specific styles */
+body { background-color: #f4f6fb; }
+.card { border-radius: 0.75rem; }
+.card.header-transparent { background: transparent; }
+.display-6 { font-size: 1.75rem; }
+.icon-bg { width: 56px; height: 56px; display:flex; align-items:center; justify-content:center; border-radius:12px; }
+.card-gradient { color: #fff; }
+.card-gradient.primary { background: linear-gradient(135deg,#4f46e5 0%,#06b6d4 100%); }
+.card-gradient.success { background: linear-gradient(135deg,#10b981 0%,#06b6d4 100%); }
+.card-gradient.warning { background: linear-gradient(135deg,#f59e0b 0%,#f97316 100%); }
+.card-gradient.danger { background: linear-gradient(135deg,#ef4444 0%,#f43f5e 100%); }
+.card-gradient.info { background: linear-gradient(135deg,#0ea5e9 0%,#6366f1 100%); }
+.card-gradient.purple { background: linear-gradient(135deg,#7c3aed 0%,#06b6d4 100%); }
+.card-gradient.teal { background: linear-gradient(135deg,#14b8a6 0%,#06b6d4 100%); }
+.card-gradient.orange { background: linear-gradient(135deg,#fb923c 0%,#f97316 100%); }
+.card-gradient .icon-bg { background: rgba(255,255,255,0.12); }
+
+.table-borderless thead th { border-bottom: 1px solid rgba(0,0,0,0.05); }
+.table-borderless tbody tr { border-bottom: 1px solid rgba(0,0,0,0.03); }
+.table-borderless tbody tr:last-child { border-bottom: 0; }
+.table-hover tbody tr:hover { background-color: rgba(0,0,0,0.02); }
+
+.card .card-header { background: transparent; border-bottom: 0; }
+.shadow-sm { box-shadow: 0 6px 18px rgba(22,28,45,0.06)!important; }
+
+/* Chart container sizing */
+#salesChart, #inventoryChart { width: 100% !important; }
+.chart-card .card-body { padding-top: .5rem; padding-bottom: .5rem; }
+.chart-card .chart-wrapper { height: 220px; }
+.chart-card.compact .chart-wrapper { height: 220px; }
+.chart-wrapper canvas { width:100% !important; height:100% !important; }
+
+@media (max-width: 767.98px) {
+    .display-6 { font-size: 1.4rem; }
+    .icon-bg { width:44px; height:44px; border-radius:10px; }
+.chart-card .chart-wrapper { height: 160px; }
+
+/* Reduce table cell padding to compact rows */
+.table td, .table th { padding: .45rem .6rem; }
+
+/* Reduce card header padding for compactness */
+.card .card-header { padding: .5rem .75rem; }
+}
+
+/* Small helpers */
+.breadcrumb-item + .breadcrumb-item::before { content: ">"; }
+

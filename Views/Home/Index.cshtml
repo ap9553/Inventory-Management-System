@@ -1,0 +1,354 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<!-- Dashboard styles and third-party libs (Font Awesome, Chart.js) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dym6Y5KqTq5bV0bYk2WvE1kQW+2Gzj6sE0b3q8h4Jqz9f7mGqQy0X1t1K1QZl2Y8Q7a1Zq7K3Z1w1V5p6s9Tg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="~/css/dashboard.css" />
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h1 class="h3 mb-0">Inventory Dashboard</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top row summary cards -->
+    <div class="row g-1">
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient primary text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Total Products</div>
+                        <div class="h3 fw-bold mb-0">1,248</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient success text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-tags"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Total Categories</div>
+                        <div class="h3 fw-bold mb-0">42</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient warning text-dark shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Total Suppliers</div>
+                        <div class="h3 fw-bold mb-0">87</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient danger text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Total Sales</div>
+                        <div class="h3 fw-bold mb-0">$58,320</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second row metrics -->
+    <div class="row g-1 mt-1">
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient purple text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Low Stock Products</div>
+                        <div class="h4 fw-bold mb-0">18</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient info text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-calendar-day"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Today's Revenue</div>
+                        <div class="h4 fw-bold mb-0">$4,120</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient teal text-white shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Pending Purchase Orders</div>
+                        <div class="h4 fw-bold mb-0">7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card card-gradient orange text-dark shadow h-100 border-0">
+                <div class="card-body d-flex align-items-center">
+                    <div class="me-3 display-5 icon-bg">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <div class="small opacity-75">Total Customers</div>
+                        <div class="h4 fw-bold mb-0">1,032</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content: tables and charts -->
+    <div class="row mt-2">
+        <div class="col-lg-9">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card mb-2 shadow-sm border-0">
+                        <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                            <h5 class="mb-0">Recent Products</h5>
+                            <small class="text-muted">Latest 10 products</small>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>SKU</th>
+                                            <th>Product</th>
+                                            <th>Category</th>
+                                            <th>Supplier</th>
+                                            <th>Stock</th>
+                                            <th>Reorder</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted">PRD-00123</td>
+                                            <td><strong>Wireless Mouse</strong></td>
+                                            <td>Accessories</td>
+                                            <td>Acme Supplies</td>
+                                            <td><span class="badge bg-success">120</span></td>
+                                            <td>50</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">PRD-00124</td>
+                                            <td><strong>Keyboard Mechanical</strong></td>
+                                            <td>Accessories</td>
+                                            <td>KeyWorld</td>
+                                            <td><span class="badge bg-warning text-dark">45</span></td>
+                                            <td>30</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">PRD-00125</td>
+                                            <td><strong>27" Monitor</strong></td>
+                                            <td>Displays</td>
+                                            <td>ViewTech</td>
+                                            <td><span class="badge bg-warning text-dark">22</span></td>
+                                            <td>10</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">PRD-00126</td>
+                                            <td><strong>USB-C Hub</strong></td>
+                                            <td>Accessories</td>
+                                            <td>HubWorks</td>
+                                            <td><span class="badge bg-danger">8</span></td>
+                                            <td>15</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">PRD-00127</td>
+                                            <td><strong>Webcam HD</strong></td>
+                                            <td>Peripherals</td>
+                                            <td>CamCo</td>
+                                            <td><span class="badge bg-success">60</span></td>
+                                            <td>20</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card mb-2 shadow-sm border-0">
+                        <div class="card-header d-flex justify-content-between align-items-center bg-white">
+                            <h5 class="mb-0">Recent Sales</h5>
+                            <small class="text-muted">Latest 10 sales</small>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Invoice</th>
+                                            <th>Date</th>
+                                            <th>Customer</th>
+                                            <th>Items</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted">INV-2026-001</td>
+                                            <td>2026-06-20</td>
+                                            <td><strong>Global Tech</strong></td>
+                                            <td><span class="badge bg-primary">4</span></td>
+                                            <td><strong>$1,230.00</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">INV-2026-002</td>
+                                            <td>2026-06-21</td>
+                                            <td><strong>OfficeMart</strong></td>
+                                            <td><span class="badge bg-secondary">2</span></td>
+                                            <td>$420.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">INV-2026-003</td>
+                                            <td>2026-06-22</td>
+                                            <td><strong>Retailer A</strong></td>
+                                            <td><span class="badge bg-primary">6</span></td>
+                                            <td><strong>$2,150.00</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">INV-2026-004</td>
+                                            <td>2026-06-23</td>
+                                            <td><strong>DesignStudio</strong></td>
+                                            <td><span class="badge bg-secondary">1</span></td>
+                                            <td>$150.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">INV-2026-005</td>
+                                            <td>2026-06-24</td>
+                                            <td><strong>AlphaCorp</strong></td>
+                                            <td><span class="badge bg-primary">3</span></td>
+                                            <td><strong>$860.00</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card mb-2 chart-card compact">
+                <div class="card-header">
+                    <h6 class="mb-0">Sales Overview</h6>
+                </div>
+                <div class="card-body py-2">
+                    <div class="chart-wrapper">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-2 chart-card compact">
+                <div class="card-header">
+                    <h6 class="mb-0">Inventory Status</h6>
+                </div>
+                <div class="card-body py-2">
+                    <div class="chart-wrapper">
+                        <canvas id="inventoryChart"></canvas>
+                    </div>
+                    <ul class="list-unstyled mt-2 mb-0 small">
+                        <li><span class="badge bg-danger me-2">Low</span> 18 products</li>
+                        <li><span class="badge bg-warning me-2">Reorder</span> 56 products</li>
+                        <li><span class="badge bg-success me-2">Healthy</span> 1,174 products</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sales Overview (line)
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [820, 932, 901, 934, 1290, 1330, 1200],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.15)',
+                    tension: 0.3,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Inventory Status (doughnut)
+        const invCtx = document.getElementById('inventoryChart').getContext('2d');
+        const inventoryChart = new Chart(invCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Low','Reorder','Healthy'],
+                datasets: [{
+                    data: [18,56,1174],
+                    backgroundColor: ['#dc3545','#ffc107','#198754']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+    </script>
+}
